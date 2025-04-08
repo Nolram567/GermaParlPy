@@ -1,0 +1,20 @@
+[project]
+name = "germaparlpy"
+version = "1.0.0"
+description = "The GermaParlPy Python package provides functionality to deserialize, serialize, manage, and query the GermaParlTEI corpus and derived corpora."
+authors = [
+    { name = "Marlon-Benedikt George", email = "mbgdevelopment@proton.me" }
+]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.urls]
+"Homepage" = "https://nolram567.github.io/GermaParlPy/"
+"Repository" = "https://github.com/Nolram567/GermaParlPy"
+"Issues" = "https://github.com/Nolram567/GermaParlPy/issues"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
