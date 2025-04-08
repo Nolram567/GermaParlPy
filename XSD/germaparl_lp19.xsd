@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="TEI">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="teiHeader"/>
+                <xs:element ref="text"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="teiHeader">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="fileDesc"/>
+                <xs:element ref="encodingDesc"/>
+                <xs:element ref="profileDesc"/>
+                <xs:element ref="revisionDesc"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="fileDesc">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="titleStmt"/>
+                <xs:element ref="editionStmt"/>
+                <xs:element ref="publicationStmt"/>
+                <xs:element ref="sourceDesc"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="titleStmt">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="title"/>
+                <xs:element ref="legislativePeriod"/>
+                <xs:element ref="sessionNo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="title" type="xs:string"/>
+    <xs:element name="legislativePeriod" type="xs:integer"/>
+    <xs:element name="sessionNo" type="xs:integer"/>
+    <xs:element name="editionStmt">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="edition"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="edition">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="package"/>
+                <xs:element ref="version"/>
+                <xs:element ref="birthday"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="package" type="xs:NCName"/>
+    <xs:element name="version" type="xs:NMTOKEN"/>
+    <xs:element name="birthday" type="xs:NMTOKEN"/>
+    <xs:element name="publicationStmt">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="publisher"/>
+                <xs:element ref="date"/>
+                <xs:element ref="page"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="publisher" type="xs:string"/>
+    <xs:element name="page">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="sourceDesc">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="filetype"/>
+                <xs:element ref="url"/>
+                <xs:element ref="date"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="filetype" type="xs:NCName"/>
+    <xs:element name="url" type="xs:anyURI"/>
+    <xs:element name="encodingDesc">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="projectDesc"/>
+                <xs:element ref="samplingDecl"/>
+                <xs:element ref="editorialDecl"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="projectDesc" type="xs:string"/>
+    <xs:element name="samplingDecl">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="editorialDecl">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="profileDesc">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="revisionDesc">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="text">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="body"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="body">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="div"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="div">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" ref="sp"/>
+            </xs:sequence>
+            <xs:attribute name="desc" use="required"/>
+            <xs:attribute name="n" use="required" type="xs:NMTOKEN"/>
+            <xs:attribute name="type" use="required" type="xs:NCName"/>
+            <xs:attribute name="what" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="sp">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="speaker"/>
+                <xs:choice maxOccurs="unbounded">
+                    <xs:element ref="p"/>
+                    <xs:element ref="stage"/>
+                </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="name" use="required"/>
+            <xs:attribute name="parliamentary_group" use="required"/>
+            <xs:attribute name="party" use="required"/>
+            <xs:attribute name="role" use="required" type="xs:NCName"/>
+            <xs:attribute name="who" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="speaker" type="xs:string"/>
+    <xs:element name="p" type="xs:string"/>
+    <xs:element name="stage">
+        <xs:complexType mixed="true">
+            <xs:attribute name="type" use="required" type="xs:NCName"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="date">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:NMTOKEN">
+                    <xs:attribute name="when"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

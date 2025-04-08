@@ -1,0 +1,32 @@
+.navbar-logo {
+    width: auto !important;
+    height: 55px !important;
+    max-height: none !important;
+    display: block;
+}
+
+.navbar-brand-logo {
+    display: flex !important;
+    align-items: center !important;
+    height: auto !important;
+    max-height: none !important;
+}
+
+body .nav-footer{
+    border-top: 0px;
+  }
+  
+  .nav-footer{
+    
+    background-color: #349ff4;
+    padding-top: 1.0rem;
+    padding-bottom: 1.0rem;
+    font-size: 1.1em;
+  
+  }
+  
+  .nav-footer a{
+  color: black;
+  text-decoration: none;
+  }
+  
