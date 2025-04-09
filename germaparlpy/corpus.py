@@ -56,9 +56,9 @@ class Corpus:
 
             logger.info(f"The object was successfully loaded from {path}.")
         except FileNotFoundError as e:
-            logger.error(f"Unter {path} konnte keine Datei gefunden werden:\n{e}")
+            logger.error(f"No file at {path}:\n{e}")
         except json.decoder.JSONDecodeError as e:
-            logger.error(f"Die Datei {path} ist keine gültige JSON Datei:\n{e}")
+            logger.error(f"The file {path} is no valid JSON file:\n{e}")
         except Exception as e:
             logger.error(f"An unexpected exception occurred:\n{e}")
         finally:
