@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+title: GermaParlPy
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Marlon-Benedikt
+    family-names: George
+    orcid: 'https://orcid.org/0009-0000-4381-7035'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.15180629
+repository-code: 'https://github.com/Nolram567/GermaParlPy'
+url: 'https://nolram567.github.io/GermaParlPy/'
+repository: 'https://pypi.org/project/germaparlpy/'
+abstract: >-
+  The GermaParlPy Python package provides functionality to
+  deserialize, serialize, manage, and query the GermaParlTEI
+  corpus by Blätte & Leonhardt (2024) and derived corpora.
+
+  The GermaParlTEI corpus comprises the plenary protocols of
+  the German Bundestag (parliament), encoded in XML
+  according to the TEI standard. The current version covers
+  the first 19 legislative periods, encompassing transcribed
+  speeches from the Bundestag's constituent session on 7
+  September 1949 to the final sitting of the Angela Merkel
+  era in 2021. This makes it a valuable resource for
+  research in various scientific disciplines.
+license: MIT
+version: 1.0.0
+date-released: '2025-04-08'
