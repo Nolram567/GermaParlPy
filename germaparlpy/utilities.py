@@ -11,7 +11,6 @@ import os
 from germaparlpy.corpus import Corpus
 
 logger = logging.getLogger("germaparlpy")
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
 def clone_corpus(repo_url="https://github.com/PolMine/GermaParlTEI.git", directory=".") -> None:
     """
