@@ -496,6 +496,10 @@ class Partition(Corpus):
         ElementTree.SubElement(source_desc, "filetype").text = metadata.get("filetype", "")
         ElementTree.SubElement(source_desc, "url").text = metadata.get("url", "")
         ElementTree.SubElement(source_desc, "date").text = metadata.get("source_date", "")
+        ElementTree.SubElement(source_desc, "secondaryDataSource").text = ("Blaette, A.and C. Leonhardt. Germaparl corpus"
+                                                                  " of plenary protocols. v2.2.0-rc1, Zenodo, 22 July"
+                                                                  " 2024, doi:10.5281/zenodo.12795193")
+        ElementTree.SubElement(source_desc, "secondaryDataSourceLicense").text = "CLARIN PUB+BY+NC+SA license"
 
         encoding_desc = ElementTree.SubElement(tei_header, "encodingDesc")
         ElementTree.SubElement(encoding_desc, "projectDesc").text = "GermaParlPy"
