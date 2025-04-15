@@ -15,6 +15,7 @@ from xml.etree.ElementTree import Element
 from datetime import datetime
 from pathlib import Path
 from typing import Union, Any
+from germaparlpy import __version__
 
 logger = logging.getLogger("germaparlpy")
 
@@ -507,7 +508,7 @@ class Partition(Corpus):
         edition_stmt = ElementTree.SubElement(tei_header, "editionStmt")
         edition = ElementTree.SubElement(edition_stmt, "edition")
         ElementTree.SubElement(edition, "package").text = "GermaParlPy"
-        ElementTree.SubElement(edition, "version").text = ""
+        ElementTree.SubElement(edition, "version").text = __version__
         ElementTree.SubElement(edition, "birthday").text = datetime.today().strftime("%Y-%m-%d")
 
         return tei_header
