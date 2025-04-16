@@ -11,6 +11,8 @@ For detailed information on the library, visit the [official website](https://no
 
 Potential use cases range from the examination of research questions in political science, history or linguistics to the compilation of training data sets for AI.
 
+In addition, this library makes it possible to access the GermaParl corpus in Python and apply powerful NLP libraries such as spacy or gensim to it. Previously, the corpus could only be accessed using the PolMineR package in the R programming language.
+
 ## Installation
 
 GermaParlPy is available on PyPi:
