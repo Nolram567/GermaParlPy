@@ -330,7 +330,9 @@ class Corpus:
             condition = condition_sensitive if case_sensitive else condition_insensitive
         )
 
-    def get_speeches_from_word_list(self, word_list: list[str], case_sensitive: bool = False) -> Partition:
+    def get_speeches_from_word_list(self,
+                                    word_list: list[str],
+                                    case_sensitive: bool = False) -> Partition:
         """
         Collects all speeches (sp-element plus children and parent div-element), whose content contains any of the
         keywords in the specified word list.
