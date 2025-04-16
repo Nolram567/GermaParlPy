@@ -111,7 +111,9 @@ def extract_element_attributes(corpus: Corpus, tag: str) -> list[str]:
 
     return list(attributes)
 
-def extract_attribute_values(corpus: Corpus, tag: str, attribute: str) -> list[str]:
+def extract_attribute_values(corpus: Corpus,
+                             tag: str,
+                             attribute: str) -> list[str]:
     """
     Extracts the values of a specific attribute from the specified tag across all documents in the corpus.
 
