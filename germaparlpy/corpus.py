@@ -154,8 +154,7 @@ class Corpus:
         """
         return self.corpus.copy() if not deep else deepcopy(self.corpus)
 
-    def get_metadata(self,
-                     key: str) -> dict[str, str]:
+    def get_metadata(self, key: str) -> dict[str, str]:
         """
         Gets the metadata for a specified session.
 
