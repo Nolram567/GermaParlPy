@@ -13,7 +13,7 @@ if __name__ == "__main__":
     # We deserialize the corpus and specify the 19. legislative term.
     corpus = Corpus.deserialize_from_xml(lp=19, path="../GermaParlTEI")
 
-    # We load a BERT Model trained fpr german sentiment classification "german-sentiment-bert" by Guhr et al. (2020)
+    # We load a BERT Model trained for german sentiment classification named "german-sentiment-bert" by Guhr et al. (2020)
     sentiment_model = SentimentModel()
 
     # We retrieve all speeches from the party CDU that contain the keyword "Asyl" or the keywords "Migration"
