@@ -32,8 +32,8 @@ if __name__ == "__main__":
     print(f"The corpus partition containing the speeches of the cdu comprises {len(corpus_cdu_paragraphs)} paragraphs.")
     print(f"The corpus partition containing the speeches of the cdu comprises {len(corpus_afd_paragraphs)} paragraphs.")
 
-    # we implement the polarity calculation as function since the library returns a string and we have to break our
-    # data sets into chunks to cause no exceptions.
+    # we implement the polarity calculation as a function since the library returns a string that we need to transform.
+    # We also have to break our data sets into chunks to cause no memory overflow since our partitions are quite big.
 
     def calculate_polarity(p: list[str]) -> float:
         model = SentimentModel()
