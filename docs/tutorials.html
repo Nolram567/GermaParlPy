@@ -336,7 +336,7 @@ Sentiment Analysis of selected speeches
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We deserialize the corpus and specify the 19. legislative term.</span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    corpus <span class="op">=</span> Corpus.deserialize_from_xml(lp<span class="op">=</span><span class="dv">19</span>, path<span class="op">=</span><span class="st">"../GermaParlTEI"</span>)</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We load a BERT Model trained fpr german sentiment classification "german-sentiment-bert" by guhr et al. (2020)</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We load a BERT Model trained for german sentiment classification named "german-sentiment-bert" by guhr et al. (2020)</span></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    sentiment_model <span class="op">=</span> SentimentModel()</span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We retrieve all speeches from the party CDU that contain the keyword "Asyl" or the keywords "Migration"</span></span>
@@ -355,8 +355,8 @@ Sentiment Analysis of selected speeches
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"The corpus partition containing the speeches of the cdu comprises </span><span class="sc">{</span><span class="bu">len</span>(corpus_cdu_paragraphs)<span class="sc">}</span><span class="ss"> paragraphs."</span>)</span>
 <span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"The corpus partition containing the speeches of the cdu comprises </span><span class="sc">{</span><span class="bu">len</span>(corpus_afd_paragraphs)<span class="sc">}</span><span class="ss"> paragraphs."</span>)</span>
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># we implement the polarity calculation as function since the library returns a string and we have to break our</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># data sets into chunks to cause no exceptions.</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We implement the polarity calculation as a function since the library returns a string that we need to transform.</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># We also have to break our data sets into chunks to cause no memory overflow since our partitions are quite big.</span></span>
 <span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> calculate_polarity(p: <span class="bu">list</span>[<span class="bu">str</span>]) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
 <span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>        model <span class="op">=</span> SentimentModel()</span>
