@@ -33,11 +33,11 @@ Click [here](https://nolram567.github.io/GermaParlPy/) for the full API Referenc
 
 ## XML Structure
 
-Click [here](https://nolram567.github.io/GermaParlPy/) to learn more about the XML Structure of the underlying corpus GermaParlTEI[^1].
+Click [here](https://nolram567.github.io/GermaParlPy/xml-structure.html) to learn more about the XML Structure of the underlying corpus GermaParlTEI[^1].
 
 ## Tutorials
 
-I have prepared three example scripts that showcase the utilisation and potential use cases of GermaParlPy. You can find the scripts in the /example directory or [here](https://nolram567.github.io/GermaParlPy/).
+I have prepared three example scripts that showcase the utilisation and potential use cases of GermaParlPy. You can find the scripts in the /example directory or [here](https://nolram567.github.io/GermaParlPy/tutorials.html).
 
 ## Contributing
 
