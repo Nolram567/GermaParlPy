@@ -240,8 +240,7 @@ class Corpus:
         """
         return self.get_partition_by_sp_attribute(attribute=attribute_name, value=person)
 
-    def get_speeches_from_party(self,
-                                party: str) -> Partition:
+    def get_speeches_from_party(self, party: str) -> Partition:
         """
         Collects all speeches from persons of a specified party (sp-elements plus children and parent div-element) in
         the corpus and returns a new partition object.
