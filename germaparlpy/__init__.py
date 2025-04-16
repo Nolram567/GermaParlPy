@@ -5,7 +5,7 @@ The GermaParlPy Python package provides functionality to deserialize, serialize,
 
 import logging
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 logger = logging.getLogger("germaparlpy")
 logger.addHandler(logging.NullHandler())
