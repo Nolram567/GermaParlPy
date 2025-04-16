@@ -310,7 +310,9 @@ class Corpus:
 
         return Partition(partition_corpus)
 
-    def get_speeches_from_keyword(self, keyword: str, case_sensitive: bool = False) -> Partition:
+    def get_speeches_from_keyword(self,
+                                  keyword: str,
+                                  case_sensitive: bool = False) -> Partition:
         """
         Collects all speeches (sp-element plus children and parent div-element), whose content contains a keyword.
 
