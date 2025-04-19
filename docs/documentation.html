@@ -200,6 +200,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#private-methods-for-internal-use" id="toc-private-methods-for-internal-use" class="nav-link" data-scroll-target="#private-methods-for-internal-use">Private Methods for internal use</a>
   <ul class="collapse">
   <li><a href="#load_xml_for_legislative_period" id="toc-load_xml_for_legislative_period" class="nav-link" data-scroll-target="#load_xml_for_legislative_period"><strong>load_xml_for_legislative_period</strong></a></li>
+  <li><a href="#extract_metadata" id="toc-extract_metadata" class="nav-link" data-scroll-target="#extract_metadata"><strong>extract_metadata</strong></a></li>
+  <li><a href="#get_text" id="toc-get_text" class="nav-link" data-scroll-target="#get_text"><strong>get_text</strong></a></li>
   </ul></li>
   </ul></li>
   </ul></li>
@@ -280,9 +282,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><a href="#private-methods">Private Methods</a>
 <ul>
-<li><a href="#__load_xml_for_legislative_period"><code>__load_xml_for_legislative_period</code></a></li>
-<li><a href="#__extract_metadata"><code>__extract_metadata</code></a></li>
-<li><a href="#__get_text"><code>__get_text</code></a></li>
+<li><a href="#load_xml_for_legislative_period"><code>__load_xml_for_legislative_period</code></a></li>
+<li><a href="#extract_metadata"><code>__extract_metadata</code></a></li>
+<li><a href="#get_text"><code>__get_text</code></a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -300,7 +302,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><a href="#private-methods-1">Private Methods</a>
 <ul>
-<li><a href="#__create_tei_header"><code>__create_tei_header</code></a></li>
+<li><a href="#create_tei_header"><code>__create_tei_header</code></a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -334,26 +336,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="constructor" class="level3">
 <h3 class="anchored" data-anchor-id="constructor">Constructor</h3>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Corpus(name: <span class="bu">str</span> <span class="op">=</span> <span class="st">""</span>, corpus<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Description:</strong> Initializes a <code>Corpus</code> object.</p>
-<p><strong>Parameters:</strong> - <code>name</code> (optional): The name of the corpus. - <code>corpus</code> (ptional): A dictionary representing the corpus structure.</p>
+<p>Initializes a <code>Corpus</code> object.</p>
+<p><strong>Parameters:</strong> <br> <code>name</code> (optional): The name of the corpus. <br> <code>corpus</code> (optional): A dictionary representing the corpus structure. <br></p>
 <hr>
 </section>
 <section id="static-methods" class="level3">
 <h3 class="anchored" data-anchor-id="static-methods">Static Methods</h3>
 <section id="deserialize_from_json" class="level4">
 <h4 class="anchored" data-anchor-id="deserialize_from_json"><strong>deserialize_from_json</strong></h4>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>deserialize_from_json(filepath: <span class="bu">str</span>, name: <span class="bu">str</span>) <span class="op">-&gt;</span> Corpus</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">staticmethod</span> deserialize_from_json(filepath: <span class="bu">str</span>, name: <span class="bu">str</span>) <span class="op">-&gt;</span> Corpus</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Factory Method for creating Corpus objects from a JSON file. The JSON file should have been created by the object method serialize().</p>
-<p><strong>Parameters:</strong> - <code>filepath</code> : Path to the JSON file. - <code>name</code> : Name of the corpus.</p>
-<p><strong>Returns:</strong> - The deserialized <code>Corpus</code> object.</p>
+<p><strong>Parameters:</strong> <br> <code>filepath</code> : Path to the JSON file.<br> <code>name</code> : Name of the corpus.<br></p>
+<p><strong>Returns:</strong> The deserialized <code>Corpus</code> object.</p>
 <hr>
 </section>
 <section id="deserialize_from_xml" class="level4">
 <h4 class="anchored" data-anchor-id="deserialize_from_xml"><strong>deserialize_from_xml</strong></h4>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>deserialize_from_xml(lp: Union[<span class="bu">range</span>, <span class="bu">int</span>], path: <span class="bu">str</span>, name: <span class="bu">str</span>) <span class="op">-&gt;</span> Corpus</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">staticmethod</span> deserialize_from_xml(lp: Union[<span class="bu">range</span>, <span class="bu">int</span>], path: <span class="bu">str</span>, name: <span class="bu">str</span>) <span class="op">-&gt;</span> Corpus</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Factory Method for creating Corpus objects from an XML corpus. The XML corpus should comply with the structure of the original GermaParlTEI Corpus that is fetched with utilities.clone_corpus() or created with Partition.serialize_corpus_as_xml().</p>
-<p><strong>Parameters:</strong> - <code>lp</code> : Legislative term(s) as a range or integer. - <code>path</code> (optional): Path to the corpus directory. - <code>name</code> (optional): Name of the new corpus object.</p>
-<p><strong>Returns:</strong> - The deserialized <code>Corpus</code> object.</p>
+<p><strong>Parameters:</strong><br> <code>lp</code> : Legislative term(s) as a range or integer.<br> <code>path</code> (optional): Path to the corpus directory.<br> <code>name</code> (optional): Name of the new corpus object.<br></p>
+<p><strong>Returns:</strong> The deserialized <code>Corpus</code> object.</p>
 <hr>
 </section>
 </section>
@@ -363,23 +365,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="serialize"><strong>serialize</strong></h4>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>serialize(path: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Serialize a Corpus object as JSON file.</p>
-<p><strong>Parameters:</strong> - <code>path</code>: Path where the JSON file should be saved.</p>
+<p><strong>Parameters:</strong><br> <code>path</code>: Path where the JSON file should be saved.</p>
 <hr>
 </section>
 <section id="get_corpus" class="level4">
 <h4 class="anchored" data-anchor-id="get_corpus"><strong>get_corpus</strong></h4>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>get_corpus(deep: <span class="bu">bool</span> <span class="op">=</span> <span class="va">False</span>) <span class="op">-&gt;</span> <span class="bu">dict</span>[<span class="bu">str</span>, <span class="bu">dict</span>[<span class="bu">str</span>, Any]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Returns a copy of the instance’s corpus.</p>
-<p><strong>Parameters:</strong> - <code>deep</code> (optional): If <code>True</code>, a deep copy is returned.</p>
-<p><strong>Returns:</strong> - A copy of the instance’s corpus.</p>
+<p><strong>Parameters:</strong><br> <code>deep</code> (optional): If <code>True</code>, a deep copy is returned.</p>
+<p><strong>Returns:</strong> A copy of the instance’s corpus.</p>
 <hr>
 </section>
 <section id="get_metadata" class="level4">
 <h4 class="anchored" data-anchor-id="get_metadata"><strong>get_metadata</strong></h4>
 <div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>get_metadata(key: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">dict</span>[<span class="bu">str</span>, <span class="bu">str</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Retrieves metadata for a specific corpus entry, representing a document.</p>
-<p><strong>Parameters:</strong> - <code>key</code>: The corpus entry (#legislativePeriod_#sessionNumber).</p>
-<p><strong>Returns:</strong> - The metadata on the corpus entry, i.e., the document.</p>
+<p><strong>Parameters:</strong><br> <code>key</code>: The corpus entry (#legislativePeriod_#sessionNumber).</p>
+<p><strong>Returns:</strong> The metadata on the corpus entry, i.e., the document.</p>
 <hr>
 </section>
 <section id="get_partition_by_sp_attribute" class="level4">
@@ -387,65 +389,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>get_partition_by_sp_attribute(attribute: <span class="bu">str</span>, value: <span class="bu">str</span>) <span class="op">-&gt;</span> Partition</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Template Method to filters the corpus based on an attribute of <code>sp</code> elements.</p>
 <p>All div-elements and their matching child elements in the corpus are collected, if a children sp-element matches a specified attribute and value pair. The div-element containing the matched sp-element is collected, plus all child elements of sp. All sp-elements within the parent div-element that do not fulfill the condition, are not collected. All collected elements are assembled within a new ElementTree with a &lt;body&gt;-element as the root. The new corpus is indexed with the old key and the old metadata within a new Partition Object.</p>
-<p><strong>Parameters:</strong> - <code>attribute</code>: The attribute name to filter by. - <code>value</code>: The attribute value to match.</p>
-<p><strong>Returns:</strong> - A <code>Partition</code> object containing the matching elements.</p>
+<p><strong>Parameters:</strong><br> <code>attribute</code>: The attribute name to filter by.<br> <code>value</code>: The attribute value to match.<br></p>
+<p><strong>Returns:</strong> A <code>Partition</code> object containing the matching elements.</p>
 <hr>
 </section>
 <section id="get_speeches_from_politician" class="level4">
 <h4 class="anchored" data-anchor-id="get_speeches_from_politician"><strong>get_speeches_from_politician</strong></h4>
 <div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>get_speeches_from_politician(person: <span class="bu">str</span>, attribute_name: <span class="bu">str</span> <span class="op">=</span> <span class="st">"name"</span>) <span class="op">-&gt;</span> Partition</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Filters speeches by politician name with get_partition_by_sp_attribute().</p>
-<p><strong>Parameters:</strong> - <code>person</code> : Name of the politician. - <code>attribute_name</code> (optional): Attribute to match the politician’s name.</p>
-<p><strong>Returns:</strong> - A <code>Partition</code> object containing speeches by the specified politician.</p>
+<p><strong>Parameters:</strong><br> <code>person</code> : The name of the politician.<br> <code>attribute_name</code> (optional): Attribute name for the identification of the politician’s name.<br></p>
+<p><strong>Returns:</strong> A <code>Partition</code> object containing speeches by the specified politician.</p>
 <hr>
 </section>
 <section id="get_speeches_from_party" class="level4">
 <h4 class="anchored" data-anchor-id="get_speeches_from_party"><strong>get_speeches_from_party</strong></h4>
 <div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>get_speeches_from_party(party: <span class="bu">str</span>) <span class="op">-&gt;</span> Partition</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Filters speeches by party affiliation with get_partition_by_sp_attribute().</p>
-<p><strong>Parameters:</strong> - <code>party</code> : Name of the party.</p>
-<p><strong>Returns:</strong> - A <code>Partition</code> object containing speeches from the specified party.</p>
+<p><strong>Parameters:</strong><br> <code>party</code> : The name of the party.<br></p>
+<p><strong>Returns:</strong> A <code>Partition</code> object containing speeches from the specified party.</p>
 <hr>
 </section>
 <section id="get_speeches_from_role" class="level4">
 <h4 class="anchored" data-anchor-id="get_speeches_from_role"><strong>get_speeches_from_role</strong></h4>
 <div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>get_speeches_from_role(role: <span class="bu">str</span>, attribute_name: <span class="bu">str</span> <span class="op">=</span> <span class="st">"role"</span>) <span class="op">-&gt;</span> Partition</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Filters speeches by role with get_partition_by_sp_attribute().</p>
-<p><strong>Parameters:</strong> - <code>role</code> : Role to filter by. - <code>attribute_name</code> (optional): Attribute name for role identification.</p>
-<p><strong>Returns:</strong> - <code>Partition</code>: A partition containing speeches from the specified role.</p>
+<p><strong>Parameters:</strong><br> <code>role</code> : The role to filter by.<br> <code>attribute_name</code> (optional): Attribute name for the role identification.<br></p>
+<p><strong>Returns:</strong> <code>Partition</code>: A partition containing speeches from the specified role.</p>
 <hr>
 </section>
 <section id="get_speeches_from_condition" class="level4">
 <h4 class="anchored" data-anchor-id="get_speeches_from_condition"><strong>get_speeches_from_condition</strong></h4>
 <div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>_get_speeches_from_condition(condition: Callable[[<span class="bu">str</span>], <span class="bu">bool</span>]) <span class="op">-&gt;</span> Partition</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Template Method to filters speeches based on a user-defined condition concerning the content.</p>
-<p>All div-elements and their matching child elements in the corpus are collected, if a children sp-element matches a specified attribute and value pair. The &lt;div&gt;-element containing the matched &lt;sp&gt;-element is collected, plus all child elements of sp. All &lt;sp&gt;-elements within the parent &lt;div&gt;-element that do not fulfill the condition, are not collected. All collected elements are assembled within a new ElementTree with a &lt;body&gt;-element as the root. The new corpus is indexed with the old key and the old metadata within a new Partition Object.</p>
-<p><strong>Parameters:</strong> - <code>condition</code> : A function that takes a string (speech text) and returns a boolean.</p>
-<p><strong>Returns:</strong> - A Partition object containing speeches that match the condition.</p>
+<p>All div-elements and their matching child elements in the corpus are collected, if a children sp-element fulfills the condition. The &lt;div&gt;-element containing the matched &lt;sp&gt;-element is collected, plus all child elements of sp. All &lt;sp&gt;-elements within the parent &lt;div&gt;-element that do not fulfill the condition, are not collected. All collected elements are assembled within a new ElementTree with a &lt;body&gt;-element as the root. The new corpus is indexed with the old key and the old metadata within a new Partition Object.</p>
+<p><strong>Parameters:</strong><br> <code>condition</code> : A function that takes a string (speech text) and returns a boolean.</p>
+<p><strong>Returns:</strong> A Partition object containing speeches that match the condition.</p>
 <hr>
 </section>
 <section id="get_speeches_from_keyword" class="level4">
 <h4 class="anchored" data-anchor-id="get_speeches_from_keyword"><strong>get_speeches_from_keyword</strong></h4>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>get_speeches_from_keyword(keyword: <span class="bu">str</span>) <span class="op">-&gt;</span> Partition</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>get_speeches_from_keyword(keyword: <span class="bu">str</span>, case_sensitive: <span class="bu">bool</span> <span class="op">=</span> <span class="va">False</span>) <span class="op">-&gt;</span> Partition</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Filters speeches containing a specified keyword with get_speeches_from_condition().</p>
-<p><strong>Parameters:</strong> - <code>keyword</code> : The keyword to search for.</p>
-<p><strong>Returns:</strong> - A Partition object containing speeches with the keyword.</p>
+<p><strong>Parameters:</strong><br> <code>keyword</code> : The keyword to search for.<br> <code>case_sensitive</code> (optional): Whether the search is case-sensitive.<br></p>
+<p><strong>Returns:</strong> A Partition object containing speeches with the keyword.</p>
 <hr>
 </section>
 <section id="get_speeches_from_word_list" class="level4">
 <h4 class="anchored" data-anchor-id="get_speeches_from_word_list"><strong>get_speeches_from_word_list</strong></h4>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>get_speeches_from_word_list(word_list: <span class="bu">list</span>[<span class="bu">str</span>], case_sensitive: <span class="bu">bool</span> <span class="op">=</span> <span class="va">False</span>) <span class="op">-&gt;</span> Partition</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Filters speeches containing any word from a given list.</p>
-<p><strong>Parameters:</strong> - <code>word_list</code> : List of words to search for. - <code>case_sensitive</code> (optional): Whether the search is case-sensitive.</p>
-<p><strong>Returns:</strong> - A Partition Object containing speeches with any of the specified words.</p>
+<p><strong>Parameters:</strong><br> <code>word_list</code> : A list of words to search for.<br> <code>case_sensitive</code> (optional): Whether the search is case-sensitive.<br></p>
+<p><strong>Returns:</strong> A Partition Object containing speeches with any of the specified words.</p>
 <hr>
 </section>
 <section id="get_speeches_from_regex" class="level4">
 <h4 class="anchored" data-anchor-id="get_speeches_from_regex"><strong>get_speeches_from_regex</strong></h4>
 <div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>get_speeches_from_regex(pattern: <span class="bu">str</span>) <span class="op">-&gt;</span> Partition</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Filters speeches using a regular expression with get_speeches_from_condition().</p>
-<p><strong>Parameters:</strong> - <code>pattern</code> : Regular expression pattern to match.</p>
-<p><strong>Returns:</strong> - A Partition object containing speeches that match the pattern.</p>
+<p><strong>Parameters:</strong><br> <code>pattern</code> : Regular expression pattern to match.</p>
+<p><strong>Returns:</strong> A Partition object containing speeches that match the pattern.</p>
 <hr>
 </section>
 </section>
@@ -455,14 +457,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="len"><strong><strong>len</strong></strong></h4>
 <div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">__len__</span>() <span class="op">-&gt;</span> <span class="bu">int</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Returns the number of entries in the corpus.</p>
-<p><strong>Returns:</strong> - Number of entries in the corpus.</p>
+<p><strong>Returns:</strong> Number of entries in the corpus.</p>
 <hr>
 </section>
 <section id="bool" class="level4">
 <h4 class="anchored" data-anchor-id="bool"><strong><strong>bool</strong></strong></h4>
 <div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">__bool__</span>() <span class="op">-&gt;</span> <span class="bu">bool</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Returns whether the corpus is non-empty.</p>
-<p><strong>Returns:</strong> - <code>True</code> if the corpus contains entries, otherwise <code>False</code>.</p>
+<p><strong>Returns:</strong> <code>True</code> if the corpus contains entries, otherwise <code>False</code>.</p>
 <hr>
 </section>
 </section>
@@ -472,8 +474,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="load_xml_for_legislative_period"><strong>load_xml_for_legislative_period</strong></h4>
 <div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>__load_xml_for_legislative_period(lp: <span class="bu">int</span>, path: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Loads XML files for a given legislative period.</p>
+</section>
+<section id="extract_metadata" class="level4">
+<h4 class="anchored" data-anchor-id="extract_metadata"><strong>extract_metadata</strong></h4>
 <div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">staticmethod</span> __extract_metadata(tree: ElementTree) <span class="op">-&gt;</span> <span class="bu">dict</span>[<span class="bu">str</span>, <span class="bu">str</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Extracts metadata from an XML document.</p>
+</section>
+<section id="get_text" class="level4">
+<h4 class="anchored" data-anchor-id="get_text"><strong>get_text</strong></h4>
 <div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">staticmethod</span> __get_text(element: Element, path: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Extracts text from an XML element.</p>
 <hr>
@@ -493,17 +501,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="constructor-1" class="level3">
 <h3 class="anchored" data-anchor-id="constructor-1">Constructor</h3>
 <div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>Corpus(name: <span class="bu">str</span> <span class="op">=</span> <span class="st">""</span>, corpus<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Description:</strong> Initializes a <code>Partition</code> object by calling the super class <code>Corpus</code>.</p>
-<p><strong>Parameters:</strong> - <code>corpus</code> (optional): A dictionary representing the corpus structure.</p>
+<p>Initializes a <code>Partition</code> object by calling the super class <code>Corpus</code>.</p>
+<p><strong>Parameters:</strong><br> <code>corpus</code> (optional): A dictionary representing the corpus structure.</p>
 <hr>
 </section>
 <section id="instance-methods-1" class="level3">
 <h3 class="anchored" data-anchor-id="instance-methods-1">Instance Methods</h3>
 <section id="serialize_corpus_as_xml" class="level4">
 <h4 class="anchored" data-anchor-id="serialize_corpus_as_xml"><strong>serialize_corpus_as_xml</strong></h4>
-<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> serialize_corpus_as_xml(<span class="va">self</span>, path: <span class="bu">str</span> <span class="op">=</span> <span class="st">"derived_corpus"</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Description:</strong> Serializes the corpus as a set of XML files. Generates an XML file for every entry in the corpus in a specified folder that is created during runtime under “path”.</p>
-<p><strong>Parameters:</strong> - <code>path</code> (optional): The path and name of the folder to be created.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>serialize_corpus_as_xml(<span class="va">self</span>, path: <span class="bu">str</span> <span class="op">=</span> <span class="st">"derived_corpus"</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Serializes the corpus as a set of XML files. Generates an XML file for every entry in the corpus in a specified folder that is created during runtime under “path”.</p>
+<p><strong>Parameters:</strong><br> <code>path</code> (optional): The path and name of the folder to be created.</p>
 <hr>
 </section>
 </section>
@@ -511,10 +519,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="private-methods-for-internal-use-1">Private Methods for internal use</h3>
 <section id="create_tei_header" class="level4">
 <h4 class="anchored" data-anchor-id="create_tei_header"><strong>create_tei_header</strong></h4>
-<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">staticmethod</span> <span class="kw">def</span> __create_tei_header(metadata: <span class="bu">dict</span>) <span class="op">-&gt;</span> Element:</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>Description:</strong> Creates a /<teiheader> element from the given metadata dictionary.</teiheader></p>
-<p><strong>Parameters:</strong> metadata: The metadata dictionary.</p>
-<p><strong>Returns:</strong> The /<teiheader> element as an Element object.</teiheader></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">staticmethod</span> __create_tei_header(metadata: <span class="bu">dict</span>) <span class="op">-&gt;</span> Element:</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Creates a &lt; teiHeader &gt; element from the given metadata dictionary.</p>
+<p><strong>Parameters:</strong><br> <code>metadata</code>: The metadata dictionary.</p>
+<p><strong>Returns:</strong> The &lt; teiHeader &gt; element as an Element object.</p>
 <hr>
 </section>
 </section>
@@ -535,97 +543,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="clone_corpus"><strong>clone_corpus</strong></h4>
 <div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>clone_corpus(repo_url: <span class="bu">str</span> <span class="op">=</span> <span class="st">"https://github.com/PolMine/GermaParlTEI.git"</span>) <span class="op">-&gt;</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Clones the GermaParlTEI corpus from GitHub.</p>
-<p><strong>Parameters:</strong></p>
-<ul>
-<li><code>repo_url</code> (optional): The URL of the repository. Defaults to <code>https://github.com/PolMine/GermaParlTEI.git</code>.</li>
-</ul>
+<p><strong>Parameters:</strong><br> <code>repo_url</code> (optional): The URL of the repository. Defaults to <code>https://github.com/PolMine/GermaParlTEI.git</code>.</p>
 <hr>
 </section>
 <section id="get_paragraphs_from_element" class="level4">
 <h4 class="anchored" data-anchor-id="get_paragraphs_from_element"><strong>get_paragraphs_from_element</strong></h4>
 <div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>get_paragraphs_from_element(element: Element) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">str</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Extracts the text content from all <code>&lt;p&gt;</code> elements that are descendants of the given XML element.</p>
-<p><strong>Parameters:</strong></p>
-<ul>
-<li><code>element</code>: The parent XML element.</li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul>
-<li>A list of text content from all <code>&lt;p&gt;</code> elements found in the subtree.</li>
-</ul>
+<p><strong>Parameters:</strong><br> <code>element</code>: The parent XML element.</p>
+<p><strong>Returns:</strong><br> A list of text content from all <code>&lt;p&gt;</code> elements found in the subtree.</p>
 <hr>
 </section>
 <section id="get_interjections_from_element" class="level4">
 <h4 class="anchored" data-anchor-id="get_interjections_from_element"><strong>get_interjections_from_element</strong></h4>
 <div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>get_interjections_from_element(element: Element) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">str</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Extracts the text content from all <code>&lt;stage&gt;</code> elements that are descendants of the given XML element.</p>
-<p><strong>Parameters:</strong></p>
-<ul>
-<li><code>element</code>: The parent XML element.</li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul>
-<li>A list of text content from all <code>&lt;stage&gt;</code> elements found in the subtree.</li>
-</ul>
+<p><strong>Parameters:</strong><br> <code>element</code>: The parent XML element.</p>
+<p><strong>Returns:</strong> A list of text content from all <code>&lt;stage&gt;</code> elements found in the subtree.</p>
 <hr>
 </section>
 <section id="get_paragraphs_from_corpus" class="level4">
 <h4 class="anchored" data-anchor-id="get_paragraphs_from_corpus"><strong>get_paragraphs_from_corpus</strong></h4>
 <div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>get_paragraphs_from_corpus(corpus: Corpus) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">str</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Extracts the text content from all <code>&lt;p&gt;</code> elements, which contain speeches without interjections, from the given <code>Corpus</code> object.</p>
-<p><strong>Parameters:</strong></p>
-<ul>
-<li><code>corpus</code>: The <code>Corpus</code> object.</li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul>
-<li>A list of text content from all <code>&lt;p&gt;</code> elements in the corpus.</li>
-</ul>
+<p><strong>Parameters:</strong><br> <code>corpus</code>: The <code>Corpus</code> object.</p>
+<p><strong>Returns:</strong> A list of text content from all <code>&lt;p&gt;</code> elements in the corpus.</p>
 <hr>
 </section>
 <section id="get_interjections_from_corpus" class="level4">
 <h4 class="anchored" data-anchor-id="get_interjections_from_corpus"><strong>get_interjections_from_corpus</strong></h4>
 <div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>get_interjections_from_corpus(corpus: Corpus) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">str</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Extracts the text content from all <code>&lt;stage&gt;</code> elements, which contain interjections to speeches, from the given <code>Corpus</code> object.</p>
-<p><strong>Parameters:</strong></p>
-<ul>
-<li><code>corpus</code>: The <code>Corpus</code> object.</li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul>
-<li>A list of text content from all <code>&lt;stage&gt;</code> elements in the corpus.</li>
-</ul>
+<p><strong>Parameters:</strong><br> <code>corpus</code>: The <code>Corpus</code> object.</p>
+<p><strong>Returns:</strong> A list of text content from all <code>&lt;stage&gt;</code> elements in the corpus.</p>
 <hr>
 </section>
 <section id="extract_element_attributes" class="level4">
 <h4 class="anchored" data-anchor-id="extract_element_attributes"><strong>extract_element_attributes</strong></h4>
 <div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>extract_element_attributes(corpus: Corpus, tag_name: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">str</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Extracts all unique attributes of a specified tag from all documents in the corpus.</p>
-<p><strong>Parameters:</strong></p>
-<ul>
-<li><code>corpus</code>: The <code>Corpus</code> object containing the documents.</li>
-<li><code>tag_name</code>: The name of the tag whose attributes should be retrieved.</li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul>
-<li>A list of unique attributes found in the specified tag.</li>
-</ul>
+<p><strong>Parameters:</strong><br> <code>corpus</code>: The <code>Corpus</code> object containing the documents.<br> <code>tag_name</code>: The name of the tag whose attributes should be retrieved.<br></p>
+<p><strong>Returns:</strong> A list of unique attributes found in the specified tag.</p>
 <hr>
 </section>
 <section id="extract_attribute_values" class="level4">
 <h4 class="anchored" data-anchor-id="extract_attribute_values"><strong>extract_attribute_values</strong></h4>
 <div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>extract_attribute_values(corpus: Corpus, tag: <span class="bu">str</span>, attribute: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">str</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Extracts the values of a specific attribute from the specified tag across all documents in the corpus.</p>
-<p><strong>Parameters:</strong></p>
-<ul>
-<li><code>corpus</code>: The <code>Corpus</code> object containing the documents.</li>
-<li><code>tag</code>: The tag whose attributes should be searched.</li>
-<li><code>attribute</code>: The name of the attribute whose values should be extracted.</li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul>
-<li>A list of unique values for the specified attribute.</li>
-</ul>
+<p><strong>Parameters:</strong><br> <code>corpus</code>: The <code>Corpus</code> object containing the documents.<br> <code>tag</code>: The tag whose attributes should be searched.<br> <code>attribute</code>: The name of the attribute whose values should be extracted.<br></p>
+<p><strong>Returns:</strong> A list of unique values for the specified attribute.</p>
 
 
 </section>
