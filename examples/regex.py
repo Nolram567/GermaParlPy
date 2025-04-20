@@ -11,9 +11,9 @@ if __name__ == "__main__":
 
     # We deserialize the XML corpus and specify the legislative periods as intervals. The interval range(19,20) in python
     # comprises only 19 because intervals in python are right-open.
-    corpus = Corpus.deserialize_from_xml(range(19,20), path="../GermaParlTEI")
+    corpus = Corpus.deserialize_from_xml(lp=range(19,20), path="../GermaParlTEI")
 
-    # Let's search for a pattern in our corpus. Let's assume that we're interested in data politics.
+    # Let's search speeches in our corpus that match a pattern. Let's assume that we're interested in data politics.
     # For that purpose, we define a regular expression that matches all speeches containing "Daten".
     data_regex = r".*[Dd]aten.*"
 
@@ -23,10 +23,11 @@ if __name__ == "__main__":
     partition_daten_interjections = utilities.get_interjections_from_corpus(partition_daten)
 
     # Output: There are 26167 interjections to speeches containing the term 'Daten'.
-    # That's quite a lot since we have also matched unwanted terms like "Soldaten".
+    # That's quite a lot, since we have also matched unwanted terms like "Soldaten".
     # Regular expressions are computationally intensive and prone to producing false positives if you are not
     # conscientious enough.
     print(f"There are {len(partition_daten_interjections)} interjections to speeches containing the term 'Daten'")
+    print(partition_daten_interjections)
 
     # Serialize for human inspection.
     partition_daten.serialize_corpus_as_xml(path="../corpus_daten")
