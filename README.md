@@ -21,14 +21,6 @@ GermaParlPy is available on PyPi:
 pip install germaparlpy
 ```
 
-Or install from source:
-
-```sh
-git clone git@github.com:Nolram567/GermaParlPy.git
-cd germaparlpy
-pip install .
-```
-
 ## API Reference
 
 Click [here](https://nolram567.github.io/GermaParlPy/) for the full API Reference.
