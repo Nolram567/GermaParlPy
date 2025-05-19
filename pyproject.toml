@@ -1,6 +1,6 @@
 [project]
 name = "germaparlpy"
-version = "1.0.1"
+version = "1.0.4"
 description = "The GermaParlPy Python package provides functionality to deserialize, serialize, manage, and query the GermaParlTEI corpus and derived corpora."
 authors = [
     { name = "Marlon-Benedikt George", email = "mbgdevelopment@proton.me" }
