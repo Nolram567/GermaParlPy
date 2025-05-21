@@ -1,4 +1,12 @@
 # GermaParlPy
+<div align="left">
+  <a href="https://pypi.org/project/germaparlpy/">
+    <img src="https://img.shields.io/pypi/v/germaparlpy.svg" alt="PyPi Latest Release"/>
+  </a>
+  <a href="https://doi.org/10.5281/zenodo.15180629">
+    <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.15180629.svg" alt="DOI">
+  </a>
+</div>
 
 The GermaParlPy Python package provides functionality to deserialize, serialize, manage, and query the GermaParlTEI[^1]
  corpus and derived corpora.
