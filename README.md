@@ -1,4 +1,4 @@
-# GermaParlPy
+<h1>GermaParlPy</h1>
 <div align="left">
   <a href="https://pypi.org/project/germaparlpy/">
     <img src="https://img.shields.io/pypi/v/germaparlpy.svg" alt="PyPi Latest Release"/>
