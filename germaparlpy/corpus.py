@@ -323,12 +323,12 @@ class Corpus:
         Returns:
             A Partition object containing only the matching elements plus metadata.
         """
-        condition_sensitive = lambda text: keyword in text
-        condition_insensitive = lambda text: keyword.lower() in text.lower()
+        if case_sensitive:
+            condition = lambda text: keyword in text
+        else:
+            condition = lambda text: keyword.lower() in text.lower()
 
-        return self._get_speeches_from_condition(
-            condition = condition_sensitive if case_sensitive else condition_insensitive
-        )
+        return self._get_speeches_from_condition(condition=condition)
 
     def get_speeches_from_word_list(self,
                                     word_list: list[str],
@@ -344,12 +344,12 @@ class Corpus:
         Returns:
             A Partition object containing only the matching elements plus metadata.
         """
-        condition_sensitive = lambda text: any(word in text for word in word_list)
-        condition_insensitive = lambda text: any(word.lower() in text.lower() for word in word_list)
+        if case_sensitive:
+            condition = lambda text: any(word in text for word in word_list)
+        else:
+            condition = lambda text: any(word.lower() in text.lower() for word in word_list)
 
-        return self._get_speeches_from_condition(
-            condition=condition_sensitive if case_sensitive else condition_insensitive
-        )
+        return self._get_speeches_from_condition(condition=condition)
 
     def get_speeches_from_regex(self, pattern: str) -> Partition:
         """
