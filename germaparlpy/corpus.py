@@ -14,7 +14,7 @@ from copy import deepcopy
 from xml.etree.ElementTree import Element
 from datetime import datetime
 from pathlib import Path
-from typing import Union, Any
+from typing import Any
 from germaparlpy import __version__
 
 logger = logging.getLogger("germaparlpy")
@@ -66,7 +66,7 @@ class Corpus:
             return new_corpus
 
     @staticmethod
-    def deserialize_from_xml(lp: Union[range, int] = range(1, 20),
+    def deserialize_from_xml(lp: range | int = range(1, 20),
                              path: str = "GermaParlTEI") -> Corpus:
         """
         Factory Method for creating Corpus objects from an XML corpus. The XML corpus should comply with the structure
