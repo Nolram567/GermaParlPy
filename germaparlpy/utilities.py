@@ -12,6 +12,7 @@ from germaparlpy.corpus import Corpus
 
 logger = logging.getLogger("germaparlpy")
 
+
 def clone_corpus(repo_url="https://github.com/PolMine/GermaParlTEI.git", directory=".") -> None:
     """
     Clones a GitHub repository into a specified directory.
@@ -23,16 +24,21 @@ def clone_corpus(repo_url="https://github.com/PolMine/GermaParlTEI.git", directo
     destination = os.path.join(directory, "GermaParlTEI")
 
     if os.path.exists(destination):
-        logger.info(f"The directory '{destination}' already exists and presumably contains the corpus. If you want"
-                     f" to reload the corpus, please delete the directory beforehand.")
+        logger.info(
+            f"The directory '{destination}' already exists and presumably contains the corpus. If you want"
+            f" to reload the corpus, please delete the directory beforehand."
+        )
         return
 
     try:
         subprocess.run(["git", "clone", repo_url, destination], check=True)
         logger.info("The corpus was successfully loaded.")
     except Exception as e:
-        logger.error(f"An unexpected error occurred: Make sure that {repo_url} (still) exists and that it does not "
-                      f"require authentication:\n{e}")
+        logger.error(
+            f"An unexpected error occurred: Make sure that {repo_url} (still) exists and that it does not "
+            f"require authentication:\n{e}"
+        )
+
 
 def get_paragraphs_from_element(element: Element) -> list[str]:
     """
@@ -47,6 +53,7 @@ def get_paragraphs_from_element(element: Element) -> list[str]:
     """
     return [paragraph.text for paragraph in element.findall(".//p")]
 
+
 def get_interjections_from_element(element: Element) -> list[str]:
     """
     Extracts the text content from all <stage> elements that are descendants of the given element.
@@ -60,6 +67,7 @@ def get_interjections_from_element(element: Element) -> list[str]:
         A list of text content from all <stage> elements found in the subtree.
     """
     return [stage.text for stage in element.findall(".//stage")]
+
 
 def get_paragraphs_from_corpus(corpus: Corpus) -> list[str]:
     """
@@ -76,6 +84,7 @@ def get_paragraphs_from_corpus(corpus: Corpus) -> list[str]:
         paragraphs.extend(get_paragraphs_from_element(value["body"]))
     return paragraphs
 
+
 def get_interjections_from_corpus(corpus: Corpus) -> list[str]:
     """
     Extracts the text content from all <p> elements, who contain the interjections to speeches from the given Corpus
@@ -90,6 +99,7 @@ def get_interjections_from_corpus(corpus: Corpus) -> list[str]:
     for value in corpus.get_corpus().values():
         interjections.extend(get_interjections_from_element(value["body"]))
     return interjections
+
 
 def extract_element_attributes(corpus: Corpus, tag: str) -> list[str]:
     """
@@ -111,9 +121,8 @@ def extract_element_attributes(corpus: Corpus, tag: str) -> list[str]:
 
     return list(attributes)
 
-def extract_attribute_values(corpus: Corpus,
-                             tag: str,
-                             attribute: str) -> list[str]:
+
+def extract_attribute_values(corpus: Corpus, tag: str, attribute: str) -> list[str]:
     """
     Extracts the values of a specific attribute from the specified tag across all documents in the corpus.
 

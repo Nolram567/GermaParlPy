@@ -19,12 +19,14 @@ from germaparlpy import __version__
 
 logger = logging.getLogger("germaparlpy")
 
+
 class Corpus:
     """
     This class implements the corpus as a Python object. It provides methods to deserialize and manage corpora as well
     as the retrieval of corpus partitions and metadata.
     """
-    def __init__(self, corpus: dict =None):
+
+    def __init__(self, corpus: dict = None):
         if corpus is None:
             corpus = {}
 
@@ -45,7 +47,7 @@ class Corpus:
         new_corpus.corpus = {}
 
         try:
-            with open(Path(path), "r", encoding='utf-8') as f:
+            with open(Path(path), "r", encoding="utf-8") as f:
                 new_corpus.corpus = json.load(f)
 
             for key in new_corpus.get_corpus().keys():
@@ -83,11 +85,15 @@ class Corpus:
         if isinstance(lp, range):
             for i in lp:
                 if i == 20:
-                    logger.warning("The corpus comprises 19 legislative terms. Aborting...")
+                    logger.warning(
+                        "The corpus comprises 19 legislative terms. Aborting..."
+                    )
                     break
                 new_corpus.__load_xml_for_legislative_period(i, path)
         elif lp > 19:
-            logger.warning("The corpus comprises 19 legislative terms. An empty corpus object is given back.")
+            logger.warning(
+                "The corpus comprises 19 legislative terms. An empty corpus object is given back."
+            )
         else:
             new_corpus.__load_xml_for_legislative_period(lp, path)
 
@@ -106,16 +112,20 @@ class Corpus:
                 try:
                     tree = ElementTree.parse(entry)
                 except ElementTree.ParseError as e:
-                    logger.error(f"Error parsing XML file {entry}. Continue with next file:\n {e}")
+                    logger.error(
+                        f"Error parsing XML file {entry}. Continue with next file:\n {e}"
+                    )
                     continue
                 key = entry.name[3:-4]
                 self.corpus[key] = {}
                 self.corpus[key]["body"] = tree.getroot().find(".//text/body")
                 self.corpus[key].update(Corpus.__extract_metadata(tree))
         except FileNotFoundError as e:
-            logger.error(f"Make sure that the directory {path} exists and contains a well structured corpus."
-                         "Call the function utilities.clone_corpus() to fetch the corpus from github\n"
-                          f"{e}")
+            logger.error(
+                f"Make sure that the directory {path} exists and contains a well structured corpus."
+                "Call the function utilities.clone_corpus() to fetch the corpus from github\n"
+                f"{e}"
+            )
         except Exception as e:
             logger.error(f"An unexpected exception occurred:\n{e}")
             return
@@ -127,18 +137,22 @@ class Corpus:
         Args:
             path: The path and name of the JSON file.
         """
-        corpus_json = self.get_corpus(deep = True)
+        corpus_json = self.get_corpus(deep=True)
 
         for key in corpus_json.keys():
-            corpus_json[key]["body"] = ElementTree.tostring(corpus_json[key]["body"], encoding='utf-8').decode('utf-8')
+            corpus_json[key]["body"] = ElementTree.tostring(
+                corpus_json[key]["body"], encoding="utf-8"
+            ).decode("utf-8")
         try:
-            with open(Path(path), "w", encoding='utf-8') as f:
+            with open(Path(path), "w", encoding="utf-8") as f:
                 json.dump(corpus_json, f, indent=4, ensure_ascii=False)
         except FileNotFoundError as e:
             logger.error(f"A directory in {path} does not exist: {e}")
             return
         except PermissionError:
-            logger.error(f"Permission denied when trying to create the directory {path}.")
+            logger.error(
+                f"Permission denied when trying to create the directory {path}."
+            )
             return
 
         logger.info(f"The corpus object was successfully serialized in {path}.")
@@ -168,11 +182,11 @@ class Corpus:
             metadata = self.corpus[key].copy()
             metadata.pop("body", None)
         except KeyError as e:
-            logger.error(f"Make sure, that key {key} exists in the objects corpus:\n"
-                         f"{e}")
+            logger.error(
+                f"Make sure, that key {key} exists in the objects corpus:\n" f"{e}"
+            )
         except Exception as e:
-            logger.error(f"An unexpected exception occurred:\n"
-                         f"{e}")
+            logger.error(f"An unexpected exception occurred:\n" f"{e}")
 
         return metadata
 
@@ -238,7 +252,9 @@ class Corpus:
         Returns:
             An object from the class Partition containing only the specified elements plus metadata.
         """
-        return self.get_partition_by_sp_attribute(attribute=attribute_name, value=person)
+        return self.get_partition_by_sp_attribute(
+            attribute=attribute_name, value=person
+        )
 
     def get_speeches_from_party(self, party: str) -> Partition:
         """
@@ -347,7 +363,9 @@ class Corpus:
         if case_sensitive:
             condition = lambda text: any(word in text for word in word_list)
         else:
-            condition = lambda text: any(word.lower() in text.lower() for word in word_list)
+            condition = lambda text: any(
+                word.lower() in text.lower() for word in word_list
+            )
 
         return self._get_speeches_from_condition(condition=condition)
 
@@ -361,7 +379,9 @@ class Corpus:
         Returns:
             A Partition object containing only the matching elements plus metadata.
         """
-        return self._get_speeches_from_condition(condition = lambda text: bool(re.search(pattern, text)))
+        return self._get_speeches_from_condition(
+            condition=lambda text: bool(re.search(pattern, text))
+        )
 
     def __len__(self) -> int:
         """
@@ -396,7 +416,9 @@ class Corpus:
 
         metadata = {
             "title": Corpus.__get_text(header, ".//titleStmt/title"),
-            "legislative_period": Corpus.__get_text(header, ".//titleStmt/legislativePeriod"),
+            "legislative_period": Corpus.__get_text(
+                header, ".//titleStmt/legislativePeriod"
+            ),
             "session_no": Corpus.__get_text(header, ".//titleStmt/sessionNo"),
             "publisher": Corpus.__get_text(header, ".//publicationStmt/publisher"),
             "publication_date": Corpus.__get_text(header, ".//publicationStmt/date"),
@@ -404,12 +426,18 @@ class Corpus:
             "url": Corpus.__get_text(header, ".//sourceDesc/url"),
             "source_date": Corpus.__get_text(header, ".//sourceDesc/date"),
             "project": Corpus.__get_text(header, ".//encodingDesc/projectDesc"),
-            "edition_package": Corpus.__get_text(header, ".//editionStmt/edition/package"),
-            "edition_version": Corpus.__get_text(header, ".//editionStmt/edition/version"),
-            "edition_birthday": Corpus.__get_text(header, ".//editionStmt/edition/birthday"),
+            "edition_package": Corpus.__get_text(
+                header, ".//editionStmt/edition/package"
+            ),
+            "edition_version": Corpus.__get_text(
+                header, ".//editionStmt/edition/version"
+            ),
+            "edition_birthday": Corpus.__get_text(
+                header, ".//editionStmt/edition/birthday"
+            ),
         }
         return metadata
-    
+
     @staticmethod
     def __get_text(element: Element, path: str) -> str:
         """
@@ -423,6 +451,7 @@ class Corpus:
         """
         found = element.find(path)
         return found.text.strip() if found is not None and found.text else ""
+
 
 class Partition(Corpus):
     """
@@ -447,7 +476,9 @@ class Partition(Corpus):
             logger.warning(f"The directory or file {path} already exists. Aborting...")
             return
         except PermissionError:
-            logger.error(f"Permission denied when trying to create the directory {path}.")
+            logger.error(
+                f"Permission denied when trying to create the directory {path}."
+            )
             return
         except Exception as e:
             logger.error(f"An unexpected error occurred: {e}")
@@ -472,7 +503,9 @@ class Partition(Corpus):
                 tree = ElementTree.ElementTree(new_root)
                 tree.write(f, encoding="utf-8", xml_declaration=True)
 
-        logger.info(f"The corpus was successfully serialized as XML document collection in {path}.")
+        logger.info(
+            f"The corpus was successfully serialized as XML document collection in {path}."
+        )
 
     @staticmethod
     def __create_tei_header(metadata: dict) -> Element:
