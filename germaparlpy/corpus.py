@@ -62,8 +62,8 @@ class Corpus:
             logger.error(f"The file {path} is no valid JSON file:\n{e}")
         except Exception as e:
             logger.error(f"An unexpected exception occurred:\n{e}")
-        finally:
-            return new_corpus
+
+        return new_corpus
 
     @staticmethod
     def deserialize_from_xml(lp: range | int = range(1, 20),
@@ -173,8 +173,8 @@ class Corpus:
         except Exception as e:
             logger.error(f"An unexpected exception occurred:\n"
                          f"{e}")
-        finally:
-            return metadata
+
+        return metadata
 
     def get_partition_by_sp_attribute(self,
                                       attribute: str,
