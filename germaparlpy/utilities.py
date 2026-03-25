@@ -33,11 +33,12 @@ def clone_corpus(repo_url="https://github.com/PolMine/GermaParlTEI.git", directo
     try:
         subprocess.run(["git", "clone", repo_url, destination], check=True)
         logger.info("The corpus was successfully loaded.")
-    except Exception as e:
+    except Exception:
         logger.error(
-            f"An unexpected error occurred: Make sure that {repo_url} (still) exists and that it does not "
-            f"require authentication:\n{e}"
+            f"Fetching corpus was unsuccessful: Make sure that {repo_url} (still) exists and that it does not "
+            f"require authentication."
         )
+        raise
 
 
 def get_paragraphs_from_element(element: Element) -> list[str]:

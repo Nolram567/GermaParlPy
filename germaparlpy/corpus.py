@@ -62,8 +62,6 @@ class Corpus:
             logger.error(f"No file at {path}:\n{e}")
         except json.decoder.JSONDecodeError as e:
             logger.error(f"The file {path} is no valid JSON file:\n{e}")
-        except Exception as e:
-            logger.error(f"An unexpected exception occurred:\n{e}")
 
         return new_corpus
 
@@ -126,9 +124,6 @@ class Corpus:
                 "Call the function utilities.clone_corpus() to fetch the corpus from github\n"
                 f"{e}"
             )
-        except Exception as e:
-            logger.error(f"An unexpected exception occurred:\n{e}")
-            return
 
     def serialize(self, path: str) -> None:
         """
@@ -185,8 +180,6 @@ class Corpus:
             logger.error(
                 f"Make sure, that key {key} exists in the objects corpus:\n" f"{e}"
             )
-        except Exception as e:
-            logger.error(f"An unexpected exception occurred:\n" f"{e}")
 
         return metadata
 
@@ -479,9 +472,6 @@ class Partition(Corpus):
             logger.error(
                 f"Permission denied when trying to create the directory {path}."
             )
-            return
-        except Exception as e:
-            logger.error(f"An unexpected error occurred: {e}")
             return
 
         corpus_copy = self.get_corpus(deep=True)
