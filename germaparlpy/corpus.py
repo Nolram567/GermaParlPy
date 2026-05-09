@@ -488,8 +488,10 @@ class Partition(Corpus):
             text_element = ElementTree.Element("text")
             text_element.append(corpus_copy[key]["body"])
             new_root.append(text_element)
+            ElementTree.indent(new_root, space="    ")
 
             with open(Path(f"{path}/{lp}/BT_{key}.xml"), "wb") as f:
+
                 tree = ElementTree.ElementTree(new_root)
                 tree.write(f, encoding="utf-8", xml_declaration=True)
 
