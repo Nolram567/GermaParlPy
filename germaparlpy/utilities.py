@@ -41,7 +41,7 @@ def clone_corpus(repo_url="https://github.com/PolMine/GermaParlTEI.git", directo
         raise
 
 
-def get_paragraphs_from_element(element: Element) -> list[str]:
+def get_paragraphs_from_element(element: Element) -> list[str | None]:
     """
     Extracts the text content from all <p> elements that are descendants of the given element.
     Text from nested elements inside <p> elements will not be included.
@@ -55,7 +55,7 @@ def get_paragraphs_from_element(element: Element) -> list[str]:
     return [paragraph.text for paragraph in element.findall(".//p")]
 
 
-def get_interjections_from_element(element: Element) -> list[str]:
+def get_interjections_from_element(element: Element) -> list[str | None]:
     """
     Extracts the text content from all <stage> elements that are descendants of the given element.
     Stage elements in the GermaParl corpus are always interjections.
