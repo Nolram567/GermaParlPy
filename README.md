@@ -1,7 +1,7 @@
 <h1>GermaParlPy</h1>
 
 [![Python package](https://img.shields.io/pypi/v/germaparlpy.svg)](https://pypi.org/project/germaparlpy/)
-[![Reference DOI: 10.5281/zenodo.15180629](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.15180629-brightgreen)](https://doi.org/10.5281/zenodo.15180629)
+[![Reference DOI: 10.5281/zenodo.20339312](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.20339312-brightgreen)](https://doi.org/10.5281/zenodo.20339312)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/germaparlpy)
 
 The GermaParlPy Python package provides functionality to deserialize, serialize, manage, and query the GermaParlTEI[^1]
