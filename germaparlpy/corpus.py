@@ -26,7 +26,7 @@ class Corpus:
     as the retrieval of corpus partitions and metadata.
     """
 
-    def __init__(self, corpus: dict = None):
+    def __init__(self, corpus: dict | None = None):
         if corpus is None:
             corpus = {}
 
@@ -452,7 +452,7 @@ class Partition(Corpus):
     of the parent class Corpus.
     """
 
-    def __init__(self, corpus: dict = None):
+    def __init__(self, corpus: dict | None = None):
         super().__init__(corpus)
 
     def serialize_corpus_as_xml(self, path: str = "derived_corpus") -> None:
