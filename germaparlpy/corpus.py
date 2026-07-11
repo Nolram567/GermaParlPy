@@ -32,8 +32,8 @@ class Corpus:
 
         self.corpus = corpus
 
-    @staticmethod
-    def deserialize_from_json(path: str) -> Corpus:
+    @classmethod
+    def deserialize_from_json(cls, path: str) -> Corpus:
         """
         Factory Method for creating Corpus objects from a JSON file. The JSON file should have been created by the
         object method serialize().
@@ -43,7 +43,7 @@ class Corpus:
         Returns:
             A Corpus object built from the specified JSON file.
         """
-        new_corpus = Corpus()
+        new_corpus = cls()
         new_corpus.corpus = {}
 
         try:
@@ -65,9 +65,8 @@ class Corpus:
 
         return new_corpus
 
-    @staticmethod
-    def deserialize_from_xml(lp: range | int = range(1, 20),
-                             path: str = "GermaParlTEI") -> Corpus:
+    @classmethod
+    def deserialize_from_xml(cls, lp: range | int = range(1, 20), path: str = "GermaParlTEI") -> Corpus:
         """
         Factory Method for creating Corpus objects from an XML corpus. The XML corpus should comply with the structure
         of the original GermaParlTEI Corpus that is fetched with utilities.clone_corpus() or created with
@@ -79,7 +78,7 @@ class Corpus:
         Returns:
             A Corpus object built from a xml corpus.
         """
-        new_corpus = Corpus()
+        new_corpus = cls()
         if isinstance(lp, range):
             for i in lp:
                 if i == 20:
